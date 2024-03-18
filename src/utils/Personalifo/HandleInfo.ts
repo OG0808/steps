@@ -1,13 +1,10 @@
 import { useForm } from "react-hook-form";
 import { inputs } from "../../interfaces/types";
+import { useNavigate } from "react-router-dom";
 
 export const handleInfo = () => {
-
-
   const { register, reset, handleSubmit } = useForm<inputs>();
-
   const onSubmit = (data: inputs) => {
-    console.log(data);
     localStorage.setItem("UserInfo", JSON.stringify(data));
     reset({
       name: "",
@@ -24,7 +21,10 @@ export const handleInfo = () => {
     }
   };
 
+  const navigate = useNavigate()
+
   return {
+    navigate,
     register,
     handleSubmit,
     onSubmit,

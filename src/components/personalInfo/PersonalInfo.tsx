@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { handleInfo } from "../../utils/Personalifo/HandleInfo";
 import Tittle from "../title/Tittle";
 
+
 const PersonalInfo = () => {
-  const { handleSubmit, onSubmit, register } = handleInfo();
+  const { handleSubmit, onSubmit, register, resetValues, navigate} = handleInfo();
+  useEffect(() => {
+    resetValues();
+  }, []);
 
   return (
     <section>
@@ -47,6 +52,7 @@ const PersonalInfo = () => {
             className=" font-semibold text-lg text-white
         bg-[#022959] px-4 py-2 rounded-lg w-fit
         "
+        onClick={()=>navigate("/plan")}
           >
             Next Step
           </button>

@@ -11,3 +11,18 @@ export type inputs = {
     title:string
      description:string
   }
+
+  //tipos componente Plan 
+ export  type Plan = {
+    image: string;
+    title: string;
+    priceMo: string;
+    priceYear: string;
+    fre: string;
+  };
+  
+ export  type Price = {
+    image: string;
+    priceYear: string;
+    title: string;
+  };
