@@ -1,5 +1,5 @@
 import React from "react";
-import useStoreFlag from "../../store/useStore";
+
 
 type btn = {
   onClickNext: () => void;
