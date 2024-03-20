@@ -14,3 +14,18 @@ body{
   background: #fff;
   font-family: "Ubuntu", sans-serif;
 }
+.sidebar{
+  background:url("../public/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+@media (width>768px) {
+  .sidebar{
+    background:url("../public/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+}

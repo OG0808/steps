@@ -16,8 +16,8 @@ export type inputs = {
  export  type Plan = {
     image: string;
     title: string;
-    priceMo: string;
-    priceYear: string;
+    priceMo: string | number;
+    priceYear: string | number;
     fre: string;
   };
   
@@ -26,3 +26,14 @@ export type inputs = {
     priceYear: string;
     title: string;
   };
+
+
+
+
+  export type Picks = {
+    service: string;
+    description: string;
+    priceYr: number;
+    priceMo:  number;
+  };
+  

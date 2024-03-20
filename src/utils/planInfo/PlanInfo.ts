@@ -1,19 +1,21 @@
 import { useState } from "react";
 import useStoreFlag from "../../store/useStore";
-import { Price } from "../../interfaces/types";
 import { Plan } from "../../interfaces/types";
+import { useNavigate } from "react-router-dom";
 
 export const planIfo =()=>{
     const flag = useStoreFlag((state) => state.flag);
-  
-    const [planObject, setPlanobject] = useState<Price>();
+    const setAlert = useStoreFlag((state)=>state.setAlert)
+    const counter = useStoreFlag((state)=> state.setCounter)
+    const [planObject, setPlanobject] = useState<Plan>();
   
   
     const selectPlan = (plan: Plan) => {
       const selectedPlan = {
         image: plan.image,
         title: plan.title,
-        ...(flag ? { priceYear: plan.priceYear } : { priceMo: plan.priceMo }),
+       priceYear: plan.priceYear,
+       priceMo: plan.priceMo 
       };
   
       localStorage.setItem("plan", JSON.stringify(selectedPlan));
@@ -27,7 +29,23 @@ export const planIfo =()=>{
       }
     };
 
+    const navigate = useNavigate()
+
+    const navi =(first:object)=>{
+      if (Object.keys(first).length !== 0) {
+        navigate("/pick")
+        counter()
+      }else{
+        setAlert(true)
+      }
+
+      console.log("me estoy ejecutando");
+      
+    }
+    
     return{
+      navigate,
+        navi,
         planObject,
         selectPlan,
         getselectPlan,

@@ -27,23 +27,45 @@ export const planes = [
   {
     image: "/icon-arcade.svg",
     title: "Arcade",
-    priceMo: "$9/mo",
-    priceYear: "$90/yr",
+    priceMo: 9,
+    priceYear: 90,
     fre:'2 months free'
   },
   {
     image: "/icon-advanced.svg",
     title: "Advance",
-    priceMo: "$12/mo",
-    priceYear: "$120/yr",
+    priceMo: 12,
+    priceYear: 120,
     fre:'2 months free'
   },
   {
     image: "/icon-pro.svg",
     title: "Pro",
-    priceMo: "$15/mo",
-    priceYear: "$150/yr",
+    priceMo: 15,
+    priceYear: 150,
     fre:'2 months free'
 
   },
 ];
+
+
+export const picks = [
+  {
+    service: "Online service",
+    description: "Access to multiplayer games",
+    priceYr: 10,
+    priceMo: 1,
+  },
+  {
+    service: "Larger storage",
+    description: "Extra 1TB of cloud save",
+    priceYr: 20,
+    priceMo: 2,
+  },
+  {
+    service: "Customizable profile",
+    description: "Custom theme on your profile",
+    priceYr: 20,
+    priceMo: 2,
+  }
+]

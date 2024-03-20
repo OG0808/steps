@@ -3,20 +3,24 @@ import { handleInfo } from "../../utils/Personalifo/HandleInfo";
 import Tittle from "../title/Tittle";
 
 
+
 const PersonalInfo = () => {
-  const { handleSubmit, onSubmit, register, resetValues, navigate} = handleInfo();
+  const { handleSubmit, onSubmit, register, resetValues} = handleInfo();
+
+
+  
   useEffect(() => {
     resetValues();
   }, []);
 
   return (
-    <section>
+    <section className=" max-md:z-20"> 
       <Tittle
         title="Personal Info"
         description="Please provide your name,
          email address, and phone number."
       />
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col  mt-10">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col  mt-9 w-full ">
         <label className="font-medium mb-1 text-[#022959]">Name</label>
         <input
           {...register("name", { required: true })}
@@ -49,11 +53,10 @@ const PersonalInfo = () => {
         />
         <div className="flex justify-end mt-20">
           <button
+          onClick={()=>{}}
             className=" font-semibold text-lg text-white
         bg-[#022959] px-4 py-2 rounded-lg w-fit
-        "
-        onClick={()=>navigate("/plan")}
-          >
+        ">
             Next Step
           </button>
         </div>
