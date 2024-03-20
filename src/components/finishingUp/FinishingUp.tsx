@@ -78,7 +78,7 @@ const change =()=>{
 
 </section>
 <div className='flex justify-between px-5'>
-  <p className='text-[#9699aa] text-sm'>Total (per month)</p>
+  <p className='text-[#9699aa] text-sm'>Total {chagePrice ? "(per month)" : "(per year)"} </p>
   <p className='text-[#483eff] font-bold'>$ {totalPrice}{chagePrice ? "/mo" : "/yr"}</p>
 </div>
 <div className='mt-20 flex justify-between px-5'>
