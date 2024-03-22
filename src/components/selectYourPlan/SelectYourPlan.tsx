@@ -1,4 +1,4 @@
-
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { planes } from "../../utils/arrays/Arrays";
 import { planIfo } from "../../utils/planInfo/PlanInfo";
@@ -8,49 +8,56 @@ import Toggle from "../toggle/Toggle";
 import { Plan } from "../../interfaces/types";
 import useStoreFlag from "../../store/useStore";
 
-
-
 const SelectYourPlan = () => {
-const { selectPlan, flag, navi, navigate }=planIfo()
-const [first, setfirst] = useState({})
-const alert = useStoreFlag((state) => state.alert);
-const setAlert = useStoreFlag((state) => state.setAlert);
-const countminus = useStoreFlag((state) => state.setCounterMinus);
-
-
-
+  const { selectPlan, flag, navi, navigate } = planIfo();
+  const [first, setfirst] = useState({});
+  const alert = useStoreFlag((state) => state.alert);
+  const setAlert = useStoreFlag((state) => state.setAlert);
+  const countminus = useStoreFlag((state) => state.setCounterMinus);
 
   return (
     <section className="relative">
-      {alert &&
-             <div className="absolute z-10 top-0 flex pt-44 justify-center bg-opacity-70 rounded-lg bg-slate-300 h-full w-full left-0 right-0 bottom-0">
-             <span
-                 className="
-                 
+      {alert && (
+        <div
+          className="absolute z-10 top-0 flex pt-44 
+             justify-center bg-opacity-70 rounded-lg
+             h-full w-full
+              left-0 right-0 bottom-0"
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{opacity: 0, scale: 1}}
+            transition={{ duration: 0.2 }}
+            
+            className="
+                 shadow-2xl
                  mt-10 inline-flex items-center justify-center
                  rounded-lg w-fit bg-red-100 px-5 py-2 text-red-700 h-[48px]"
-                 >
-                 <p className="whitespace-nowrap text-lg font-medium ">
-                 please choose a plugin
-                 </p>
-                 <button
-                   onClick={()=>{setAlert(false) }}
-                   className="border-none bg-[#022959] text text-white py-1 ml-3 rounded-lg px-2
+          >
+            <p className="whitespace-nowrap text-lg font-medium drop-shadow-lg">
+              please choose a plugin
+            </p>
+            <button
+              onClick={() => {
+                setAlert(false);
+              }}
+              className="border-none bg-[#022959] text text-white py-1 ml-3 rounded-lg px-2
                    cursor-pointer font-semibold
                    "
-                   >
-                   Close
-                 </button>
-               </span>
-             </div>
-      }
+            >
+              Close
+            </button>
+          </motion.span>
+        </div>
+      )}
       <Tittle
         title="Select Your Plan"
         description="You have the option of monthly or yearly billing."
       />
 
       <article className=" flex gap-5 mt-10 w-full max-sm:flex-col ">
-        {planes.map((plan:Plan) => {
+        {planes.map((plan: Plan) => {
           return (
             <div
               key={plan.title}
@@ -69,8 +76,9 @@ const countminus = useStoreFlag((state) => state.setCounterMinus);
             focus:bg-[#f8f9ff] hover:bg-[#f8f9ff]
               transition`}
               tabIndex={0}
-              onClick={() => {selectPlan(plan)
-              setfirst(plan)
+              onClick={() => {
+                selectPlan(plan);
+                setfirst(plan);
               }}
             >
               <img src={plan.image} alt="" />
@@ -78,26 +86,30 @@ const countminus = useStoreFlag((state) => state.setCounterMinus);
                 <span className="font-semibold text-sm">{plan.title}</span>
                 <span className="font-normal text-xs opacity-70">
                   $ {flag ? plan.priceYear : plan.priceMo}
-                  { flag ? "/yr":"/mo"}
+                  {flag ? "/yr" : "/mo"}
                 </span>
                 {
-                 <span className="font-normal text-xs opacity-70">{flag && plan.fre}</span> 
+                  <span className="font-normal text-xs opacity-70">
+                    {flag && plan.fre}
+                  </span>
                 }
               </div>
             </div>
           );
         })}
       </article>
-            
+
       <Toggle />
 
       <Btn
-      onclickBack={() => {
-        countminus()
-        navigate("/")}}
-      onClickNext={() => {navi(first)
-     
-      }} />
+        onclickBack={() => {
+          countminus();
+          navigate("/");
+        }}
+        onClickNext={() => {
+          navi(first);
+        }}
+      />
     </section>
   );
 };
